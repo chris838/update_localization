@@ -10,7 +10,7 @@
 '''
 This script helps keeping the LocalizedStrings in an Xcode project up-to-date.
 
-Rather than replacing all entries like genstrings does, this script keeps track of which entries are already translated and saves them. 
+Rather than replacing all entries like genstrings2 does, this script keeps track of which entries are already translated and saves them. 
 
 The code is inspired by the script update_strings written by the user ndfred on StackOverflow
 (http://stackoverflow.com/users/303539/ndfred) and published in this post http://stackoverflow.com/questions/9895621/best-practice-using-nslocalizedstring
@@ -780,7 +780,7 @@ def find_sources(folder_path, extensions=None, ignore_patterns=None):
 
     Returns:
 
-        Array with paths to all files that have to be used with genstrings
+        Array with paths to all files that have to be used with genstrings2
 
     Examples:
 
@@ -796,7 +796,7 @@ def find_sources(folder_path, extensions=None, ignore_patterns=None):
         >>> find_sources('TestInput', ignore_patterns=['3rdParty'])
         ['TestInput/test.m']
     '''
-    # First run genstrings on all source-files
+    # First run genstrings2 on all source-files
     code_file_paths = []
     if extensions is None:
         extensions = frozenset(['c', 'm', 'mm'])
@@ -876,10 +876,10 @@ def gen_strings(folder_path, gen_path=None, extensions=None, ignore_patterns=Non
     if gen_path is None:
         gen_path = code_file_paths
 
-    logging.debug('Running genstrings')
+    logging.debug('Running genstrings2')
     temp_folder_path = tempfile.mkdtemp()
 
-    arguments = ['genstrings', '-u', '-o', temp_folder_path]
+    arguments = ['genstrings2', '-u', '-o', temp_folder_path]
     arguments.extend(code_file_paths)
     subprocess.call(arguments)
     logging.debug('Temp Path: {}'.format(temp_folder_path))
