@@ -4,6 +4,8 @@ A Python Script that helps dealing with localizations in Xcode. It keeps track o
 
 Moreover it is possible to specify extensions of files that should be scanned and to specify ignore patterns for Files that should be ignored
 
+This version has been updated to use genstrings2. Install gentsrings2 from the DTLocalizableStringScanner submodule.
+
 
 ## More Information
 
